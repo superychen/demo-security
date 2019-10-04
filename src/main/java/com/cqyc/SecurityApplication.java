@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 
 /**
  * @author: cqyc
- * Description:
+ * Description: 连接git远程仓库: git remote add origin https://github.com/superychen/demo-security.git
  * Created by cqyc on 19-10-4
  */
 @SpringBootApplication
