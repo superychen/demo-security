@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqyc.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.cqyc.domain.test.User">
+        <id property="uid" column="uid"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <collection property="roles" ofType="com.cqyc.domain.test.Role">
+            <id property="rid" column="rid"></id>
+            <result property="rname" column="rname"></result>
+             <collection property="permissions" ofType="com.cqyc.domain.test.Permission">
+                 <id property="pid" column="pid"></id>
+                 <result property="name" column="name"></result>
+                 <result property="url" column="url"></result>
+             </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findByUsername" parameterType="string" resultMap="userMap">
+        select u.*,r.*,p.*
+        from user u
+            inner join user_role ur on ur.uid=u.uid
+            inner join role r on r.rid=ur.rid
+            inner join permission_role pr on pr.rid=r.rid
+            inner join permission p on pr.pid=p.pid
+        where u.username=#{username}
+    </select>
+
+
+
+
+</mapper>

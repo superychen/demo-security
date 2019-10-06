@@ -1,8 +1,9 @@
 package com.cqyc;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+//import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 /**
  * @author: cqyc
@@ -10,7 +11,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * Created by cqyc on 19-10-4
  */
 @SpringBootApplication
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+///@EnableGlobalMethodSecurity(prePostEnabled = true)
+@MapperScan(basePackages = {"com.cqyc.mapper"})
 public class SecurityApplication {
     public static void main(String[] args) {
         SpringApplication.run(SecurityApplication.class);
